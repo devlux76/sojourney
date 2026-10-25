@@ -1,0 +1,28 @@
+{
+ "stops": {
+  "Cleetwood Cove": {
+   "arrive": "Cleetwood Cove. This is the only place on the whole rim where a trail reaches the water. The cove takes its name from the Cleetwood, the boat a survey party lowered down these walls in 1886 to sound the lake for the first time. Everything you have seen today was made by a catastrophe, and it has been quiet ever since. We'll lie at the pier for two minutes. Step ashore if you like; the bell rings half a minute before we cast off.",
+   "depart": "Casting off from Cleetwood Cove. Next stop: Lah-oh Rock."
+  },
+  "Llao Rock": {
+   "arrive": "Lah-oh Rock. The great grey cliff above us is a single lava flow, nearly nineteen hundred feet from the water to its top. It filled a crater on the mountain's side not long before the collapse that made the lake. It is named for Lah-oh, the spirit of the world below in the stories of the Klamath people. We'll hold here for two minutes.",
+   "depart": "Leaving Lah-oh Rock. Next stop: Devils Backbone, on the west wall."
+  },
+  "Devils Backbone": {
+   "arrive": "Devils Backbone. That dark spine of rock running from the water all the way up to the rim is a dike. Molten rock forced its way into a crack in the mountain and hardened there, and when the mountain fell in, the wall broke away and left it standing. You are looking at the plumbing of a volcano. We'll wait here a couple of minutes.",
+   "depart": "Under way again. Next stop: Wizard Island, where we tie up."
+  },
+  "Wizard Island": {
+   "arrive": "Wizard Island. This is a volcano inside a volcano: a cinder cone that grew from the lake floor after the mountain collapsed. It rises more than seven hundred feet above the water, and the crater at its top is called the Witches Cauldron. We'll lie at the pier for two minutes. Step ashore if you like; the bell rings half a minute before we cast off.",
+   "depart": "Casting off from Wizard Island. Next stop: Phantom Ship, across the lake."
+  },
+  "Phantom Ship": {
+   "arrive": "Phantom Ship. From the rim it looks like a small boat under sail, and in mist it comes and goes, which is how it got its name. Up close it stands as tall as a sixteen-storey building. This is the oldest rock you can see anywhere in the caldera, around four hundred thousand years old. We'll hold here for two minutes.",
+   "depart": "Leaving Phantom Ship astern. Next stop: Pumice Castle, on the east wall."
+  },
+  "Pumice Castle": {
+   "arrive": "Pumice Castle. Look up at the east wall, about thirteen hundred feet above us, for the band of orange rock shaped like the towers of a ruined castle. Its layers are hard enough to have outlasted the softer pumice around them, which the weather has worn away. We'll wait here a couple of minutes.",
+   "depart": "Under way again. Next stop: Cleetwood Cove, where our tour began."
+  }
+ }
+}

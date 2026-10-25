@@ -1,0 +1,260 @@
+{
+  "customType": "BABYLON.NodeGeometry",
+  "outputNodeId": 9,
+  "blocks": [
+    {
+      "customType": "BABYLON.MeshBlock",
+      "id": 1,
+      "name": "sourceMesh",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "geometry",
+          "displayName": "geometry"
+        }
+      ],
+      "serializedCachedData": false,
+      "reverseWindingOrder": false
+    },
+    {
+      "customType": "BABYLON.GeometryInputBlock",
+      "id": 2,
+      "name": "sourcePosition",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output",
+          "displayName": "output"
+        }
+      ],
+      "type": 8,
+      "contextualValue": 1,
+      "min": 0,
+      "max": 0,
+      "groupInInspector": "",
+      "displayInInspector": true
+    },
+    {
+      "customType": "BABYLON.GeometryInputBlock",
+      "id": 3,
+      "name": "sourceNormal",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output",
+          "displayName": "output"
+        }
+      ],
+      "type": 8,
+      "contextualValue": 2,
+      "min": 0,
+      "max": 0,
+      "groupInInspector": "",
+      "displayInInspector": true
+    },
+    {
+      "customType": "BABYLON.GeometryInputBlock",
+      "id": 4,
+      "name": "trunkCentre",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output",
+          "displayName": "output"
+        }
+      ],
+      "type": 8,
+      "contextualValue": 0,
+      "min": 0,
+      "max": 0,
+      "groupInInspector": "",
+      "displayInInspector": true,
+      "value": [
+        0,
+        0,
+        0
+      ],
+      "valueType": "BABYLON.Vector3"
+    },
+    {
+      "customType": "BABYLON.MappingBlock",
+      "id": 5,
+      "name": "cylindricalBark",
+      "inputs": [
+        {
+          "name": "position",
+          "displayName": "position",
+          "inputName": "position",
+          "targetBlockId": 2,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "normal",
+          "displayName": "normal",
+          "inputName": "normal",
+          "targetBlockId": 3,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "center",
+          "displayName": "center",
+          "inputName": "center",
+          "targetBlockId": 4,
+          "targetConnectionName": "output"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "uv",
+          "displayName": "uv"
+        }
+      ],
+      "mapping": 1
+    },
+    {
+      "customType": "BABYLON.GeometryInputBlock",
+      "id": 6,
+      "name": "metreRepeat",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output",
+          "displayName": "output"
+        }
+      ],
+      "type": 4,
+      "contextualValue": 0,
+      "min": 0,
+      "max": 0,
+      "groupInInspector": "",
+      "displayInInspector": true,
+      "value": [
+        4,
+        16
+      ],
+      "valueType": "BABYLON.Vector2"
+    },
+    {
+      "customType": "BABYLON.MathBlock",
+      "id": 7,
+      "name": "metricUV",
+      "inputs": [
+        {
+          "name": "left",
+          "displayName": "left",
+          "inputName": "left",
+          "targetBlockId": 5,
+          "targetConnectionName": "uv"
+        },
+        {
+          "name": "right",
+          "displayName": "right",
+          "inputName": "right",
+          "targetBlockId": 6,
+          "targetConnectionName": "output"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "displayName": "output"
+        }
+      ],
+      "operation": 2
+    },
+    {
+      "customType": "BABYLON.SetUVsBlock",
+      "id": 8,
+      "name": "barkUV2",
+      "inputs": [
+        {
+          "name": "geometry",
+          "displayName": "geometry",
+          "inputName": "geometry",
+          "targetBlockId": 1,
+          "targetConnectionName": "geometry"
+        },
+        {
+          "name": "uvs",
+          "displayName": "uvs",
+          "inputName": "uvs",
+          "targetBlockId": 7,
+          "targetConnectionName": "output"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "displayName": "output"
+        }
+      ],
+      "evaluateContext": true,
+      "textureCoordinateIndex": 1
+    },
+    {
+      "customType": "BABYLON.GeometryOutputBlock",
+      "id": 9,
+      "name": "output",
+      "inputs": [
+        {
+          "name": "geometry",
+          "displayName": "geometry",
+          "inputName": "geometry",
+          "targetBlockId": 8,
+          "targetConnectionName": "output"
+        }
+      ],
+      "outputs": []
+    }
+  ],
+  "comment": "Authoring-only native cylindrical mapping into UV2. Source positions, normals, indices and UV1 remain unchanged.",
+  "editorData": {
+    "locations": [
+      {
+        "blockId": 1,
+        "x": 680,
+        "y": 0
+      },
+      {
+        "blockId": 2,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "blockId": 3,
+        "x": 0,
+        "y": 180
+      },
+      {
+        "blockId": 4,
+        "x": 0,
+        "y": 360
+      },
+      {
+        "blockId": 5,
+        "x": 340,
+        "y": 0
+      },
+      {
+        "blockId": 6,
+        "x": 340,
+        "y": 180
+      },
+      {
+        "blockId": 7,
+        "x": 680,
+        "y": 180
+      },
+      {
+        "blockId": 8,
+        "x": 1020,
+        "y": 0
+      },
+      {
+        "blockId": 9,
+        "x": 1360,
+        "y": 0
+      }
+    ]
+  }
+}
