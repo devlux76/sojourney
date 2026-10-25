@@ -1,0 +1,33 @@
+{
+  "name": "sojourney",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@babylonjs/addons": "latest",
+    "@babylonjs/core": "latest",
+    "@babylonjs/gui": "latest",
+    "@babylonjs/havok": "latest",
+    "@babylonjs/loaders": "latest",
+    "@babylonjs/materials": "latest",
+    "@babylonjs/post-processes": "latest",
+    "@babylonjs/procedural-textures": "latest",
+    "@babylonjs/serializers": "latest",
+    "@huggingface/transformers": "latest",
+    "phonemizer": "latest"
+  },
+  "devDependencies": {
+    "@babylonjs/inspector": "latest",
+    "@babylonjs/mcp-servers": "^9.29.0",
+    "@types/bun": "^1.4.2",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}

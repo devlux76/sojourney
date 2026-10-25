@@ -1,0 +1,503 @@
+{
+  "customType": "BABYLON.NodeRenderGraph",
+  "name": "SojourneyMainRenderGraphFixed",
+  "comment": "Minimal replacement render path for the stripped Crater Lake test scene.",
+  "blocks": [
+    {
+      "customType": "BABYLON.NodeRenderGraphInputBlock",
+      "id": 34,
+      "name": "NodeRenderGraphInputBlock",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "additionalConstructionParameters": [
+        1
+      ],
+      "creationOptions": {
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "options": {
+          "createMipMaps": false,
+          "targetTypes": [
+            3553
+          ],
+          "types": [
+            0
+          ],
+          "formats": [
+            5
+          ],
+          "layerCounts": [
+            0
+          ],
+          "samples": 1,
+          "useSRGBBuffers": [
+            false
+          ],
+          "creationFlags": [
+            0
+          ],
+          "labels": [
+            "Sojourney Color"
+          ]
+        },
+        "sizeIsPercentage": true,
+        "isHistoryTexture": false
+      },
+      "type": 1
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphInputBlock",
+      "id": 35,
+      "name": "NodeRenderGraphInputBlock",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "additionalConstructionParameters": [
+        8
+      ],
+      "creationOptions": {
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "options": {
+          "createMipMaps": false,
+          "targetTypes": [
+            3553
+          ],
+          "types": [
+            0
+          ],
+          "formats": [
+            13
+          ],
+          "layerCounts": [
+            0
+          ],
+          "samples": 1,
+          "useSRGBBuffers": [
+            false
+          ],
+          "creationFlags": [
+            0
+          ],
+          "labels": [
+            "Sojourney Depth"
+          ]
+        },
+        "sizeIsPercentage": true,
+        "isHistoryTexture": false
+      },
+      "type": 8
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphInputBlock",
+      "id": 36,
+      "name": "NodeRenderGraphInputBlock",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "additionalConstructionParameters": [
+        16777216
+      ],
+      "isExternal": true,
+      "type": 16777216
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphInputBlock",
+      "id": 37,
+      "name": "NodeRenderGraphInputBlock",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "additionalConstructionParameters": [
+        33554432
+      ],
+      "isExternal": true,
+      "type": 33554432
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphClearBlock",
+      "id": 38,
+      "name": "NodeRenderGraphClearBlock",
+      "inputs": [
+        {
+          "name": "target",
+          "inputName": "target",
+          "targetBlockId": 34,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "depth",
+          "inputName": "depth",
+          "targetBlockId": 35,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "dependencies"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output"
+        },
+        {
+          "name": "outputDepth"
+        }
+      ],
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      },
+      "clearColor": true,
+      "clearDepth": true
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphCullObjectsBlock",
+      "id": 39,
+      "name": "NodeRenderGraphCullObjectsBlock",
+      "inputs": [
+        {
+          "name": "camera",
+          "inputName": "camera",
+          "targetBlockId": 36,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "objects",
+          "inputName": "objects",
+          "targetBlockId": 37,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "dependencies"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ]
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphObjectRendererBlock",
+      "id": 40,
+      "name": "NodeRenderGraphObjectRendererBlock",
+      "inputs": [
+        {
+          "name": "target",
+          "inputName": "target",
+          "targetBlockId": 38,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "depth",
+          "inputName": "depth",
+          "targetBlockId": 38,
+          "targetConnectionName": "outputDepth"
+        },
+        {
+          "name": "camera",
+          "inputName": "camera",
+          "targetBlockId": 36,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "objects",
+          "inputName": "objects",
+          "targetBlockId": 39,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "dependencies"
+        },
+        {
+          "name": "shadowGenerators",
+          "inputName": "shadowGenerators",
+          "targetBlockId": 46,
+          "targetConnectionName": "generator"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output"
+        },
+        {
+          "name": "outputDepth"
+        },
+        {
+          "name": "objectRenderer"
+        }
+      ],
+      "additionalConstructionParameters": [
+        true,
+        true
+      ],
+      "renderParticles": true,
+      "renderSprites": true,
+      "enableClusteredLights": true,
+      "disableShadows": false,
+      "isMainObjectRenderer": true
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphImageProcessingPostProcessBlock",
+      "id": 41,
+      "name": "NodeRenderGraphImageProcessingPostProcessBlock",
+      "inputs": [
+        {
+          "name": "source",
+          "inputName": "source",
+          "targetBlockId": 40,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "target"
+        },
+        {
+          "name": "dependencies"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "toneMappingEnabled": true,
+      "toneMappingType": 1,
+      "exposure": 1,
+      "vignetteColor": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphBloomPostProcessBlock",
+      "id": 42,
+      "name": "NodeRenderGraphBloomPostProcessBlock",
+      "inputs": [
+        {
+          "name": "source",
+          "inputName": "source",
+          "targetBlockId": 41,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "target"
+        },
+        {
+          "name": "dependencies"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "additionalConstructionParameters": [
+        true,
+        0.5
+      ],
+      "threshold": 1,
+      "weight": 0.3,
+      "kernel": 128
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphSharpenPostProcessBlock",
+      "id": 43,
+      "name": "NodeRenderGraphSharpenPostProcessBlock",
+      "inputs": [
+        {
+          "name": "source",
+          "inputName": "source",
+          "targetBlockId": 42,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "target"
+        },
+        {
+          "name": "dependencies"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "edgeAmount": 0.25
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphOutputBlock",
+      "id": 44,
+      "name": "NodeRenderGraphOutputBlock",
+      "inputs": [
+        {
+          "name": "texture",
+          "inputName": "texture",
+          "targetBlockId": 43,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "dependencies"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphInputBlock",
+      "id": 45,
+      "name": "NodeRenderGraphInputBlock",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "output"
+        }
+      ],
+      "additionalConstructionParameters": [
+        4194304
+      ],
+      "isExternal": true,
+      "type": 4194304
+    },
+    {
+      "customType": "BABYLON.NodeRenderGraphCascadedShadowGeneratorBlock",
+      "id": 46,
+      "name": "NodeRenderGraphCascadedShadowGeneratorBlock",
+      "inputs": [
+        {
+          "name": "light",
+          "inputName": "light",
+          "targetBlockId": 45,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "objects",
+          "inputName": "objects",
+          "targetBlockId": 37,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "camera",
+          "inputName": "camera",
+          "targetBlockId": 36,
+          "targetConnectionName": "output"
+        },
+        {
+          "name": "geomDepth"
+        },
+        {
+          "name": "dependencies"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "generator"
+        },
+        {
+          "name": "output"
+        }
+      ],
+      "mapSize": 2048,
+      "numCascades": 3,
+      "lambda": 0.85,
+      "shadowMaxZ": 600,
+      "stabilizeCascades": true,
+      "depthClamp": true,
+      "cascadeBlendPercentage": 0.1,
+      "bias": 0.002,
+      "normalBias": 0.02,
+      "usePCSShadowMap": true,
+      "filteringQuality": 0,
+      "filter": 7
+    }
+  ],
+  "editorData": {
+    "locations": [
+      {
+        "blockId": 34,
+        "x": 0,
+        "y": 100
+      },
+      {
+        "blockId": 35,
+        "x": 220,
+        "y": 100
+      },
+      {
+        "blockId": 36,
+        "x": 440,
+        "y": 100
+      },
+      {
+        "blockId": 37,
+        "x": 660,
+        "y": 100
+      },
+      {
+        "blockId": 38,
+        "x": 880,
+        "y": 100
+      },
+      {
+        "blockId": 39,
+        "x": 1100,
+        "y": 100
+      },
+      {
+        "blockId": 40,
+        "x": 1320,
+        "y": 100
+      },
+      {
+        "blockId": 41,
+        "x": 1540,
+        "y": 100
+      },
+      {
+        "blockId": 42,
+        "x": 1760,
+        "y": 100
+      },
+      {
+        "blockId": 43,
+        "x": 1980,
+        "y": 100
+      },
+      {
+        "blockId": 44,
+        "x": 2200,
+        "y": 100
+      },
+      {
+        "blockId": 45,
+        "x": 2420,
+        "y": 100
+      },
+      {
+        "blockId": 46,
+        "x": 2640,
+        "y": 100
+      }
+    ]
+  },
+  "outputNodeId": 44
+}

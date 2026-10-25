@@ -1,0 +1,3 @@
+# Run package scripts (vite, tsc) on Bun even though their shebangs say node.
+[run]
+bun = true
