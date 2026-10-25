@@ -247,6 +247,7 @@ export async function buildWorld(scene: Scene, canvas: HTMLCanvasElement, biome:
     // the lock over; stepping ashore or opening a panel ends it at once; a stuck line releases on a
     // safety timeout instead of holding the camera for ever.
     const GUIDE_HOLD_SECONDS = 0.75;
+    // NOTE(question bug:7790ce4): safety timeouts are 60/25 s; the guide-look design says 45/20 s.
     const GUIDE_ARRIVE_SAFETY_SECONDS = 60;
     const GUIDE_DEPART_SAFETY_SECONDS = 25;
     let guideTurn = 0;
