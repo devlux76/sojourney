@@ -525,6 +525,7 @@ need a known occluded-sun view and measured Babylon effect; upward rain remains 
   is a dot smaller than a pixel. The sky overhead is the rain veil (`Fog.ts`), which is opaque at
   150 m visibility by design. For the project lead to decide whether drops should be seen coming at
   the camera.
+  NOTE(question bug:c6d9559): should drops be visible when looking straight up?
 
 From the web-ocean comparison (see R9):
 
