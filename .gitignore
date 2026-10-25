@@ -1,0 +1,14 @@
+node_modules
+dist
+.claude
+.superpowers/
+tools/.cache
+assets/
+
+# Python bytecode from tools/
+__pycache__/
+*.pyc
+
+# Streamed ground detail and collision: ~2,600 files, 320 MB, rebuilt by tools/build_ground.py
+public/packs/crater-lake/ground/near/
+public/packs/crater-lake/ground/collision/

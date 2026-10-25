@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Pin relative URLs (KTX2 decoders, textures) to the site root: this page lives under /harness/. -->
+    <base href="/" />
+    <title>Source asset inspector — fir A/B bark pilot</title>
+    <link rel="icon" href="/icons/icon-192.png" />
+    <style>
+      /* Developer-only screen: deliberately plain, kept out of the game and the default build. */
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #1b1d20; }
+      canvas { width: 100%; height: 100%; display: block; outline: none; }
+      #panel {
+        position: fixed; top: 8px; left: 8px; max-width: 300px;
+        padding: 6px 8px; background: rgba(0,0,0,0.6); color: #e8e8e8;
+        font: 12px/1.4 monospace; border-radius: 4px; white-space: normal;
+      }
+      #panel h1 { margin: 0 0 2px; font-size: 12px; font-weight: 600; }
+      #panel p { margin: 2px 0; }
+      #panel a { color: #9ecfff; }
+      #panel button, #panel select { margin: 4px 4px 2px 0; font: inherit; cursor: pointer; }
+      #panel label { margin-right: 2px; }
+      #status[data-status="ready"] { color: #9fe6a0; }
+      #status[data-status="error"] { color: #f0a080; }
+    </style>
+  </head>
+  <body>
+    <canvas id="renderCanvas" tabindex="0"></canvas>
+    <div id="panel">
+      <h1>Source asset: fir_tree_01 A/B bark pilot (original vs procedural)</h1>
+      <p>WASD move; arrows or mouse drag look; Shift faster; Space/C up/down; T reset</p>
+      <p>
+        <label for="variantSelect">Tree</label>
+        <select id="variantSelect">
+          <option value="a" selected>Tree A</option>
+          <option value="b">Tree B</option>
+        </select>
+        <label for="barkSelect">Bark</label>
+        <select id="barkSelect">
+          <option value="original">Original bark</option>
+          <option value="procedural" selected>Procedural bark</option>
+        </select>
+      </p>
+      <p id="status" data-status="loading">Loading original fir_tree_01_4k.gltf…</p>
+      <button id="resetView" type="button">Reset view</button>
+      <button id="closeBark" type="button">Close bark</button>
+      <p>Source: <a href="https://polyhaven.com/a/fir_tree_01">Fir Tree 01 by Poly Haven</a> (CC0). Procedural bark is an authoring pilot, not in the game.</p>
+    </div>
+    <script type="module" src="/src/sourceAssetInspector.ts"></script>
+  </body>
+</html>

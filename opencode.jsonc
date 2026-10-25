@@ -1,0 +1,58 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Moved here from ~/.config/opencode/opencode.jsonc on 2026-10-22 by Claude:
+  // these servers serve only sojourney, and loaded globally they pushed every
+  // OpenCode session past 128 tools, which some providers (Beam) reject.
+
+  // Chrome DevTools MCP — browser inspection + performance tracing.
+  //
+  // Launch flags matter here. Default headless Chrome falls back to
+  // SwiftShader, which silently invalidates every GPU measurement. These
+  // flags force ANGLE onto the real AMD RADV (Polaris 11) driver, which
+  // is the same backend as the 2026-09-28 Crater Lake baseline, so numbers
+  // stay comparable across sessions.
+  //   --isolated  : throwaway profile; never touch the user's real Chrome
+  //   --headless  : no window stealing focus from the user
+  //   viewport    : 1276x591 matches the baseline's usable canvas exactly
+  //   jpeg/1280px : keeps screenshot payloads small (token cost)
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": [
+        "/home/mirai/.bun/bin/chrome-devtools-mcp",
+        "--headless",
+        "--isolated",
+        "--no-usage-statistics",
+        "--no-performance-crux",
+        "--executablePath", "/snap/chromium/current/usr/lib/chromium-browser/chrome",
+        "--viewport", "1276x591",
+        "--screenshotFormat", "jpeg",
+        "--screenshotQuality", "80",
+        "--screenshotMaxWidth", "1280",
+        "--workspace", "/home/mirai/projects/sojourney",
+        "--chrome-arg=--no-sandbox",
+        "--chrome-arg=--enable-features=DefaultANGLEVulkan,Vulkan",
+        "--chrome-arg=--ignore-gpu-blocklist",
+        "--chrome-arg=--enable-gpu",
+        "--chrome-arg=--enable-gpu-rasterization",
+        "--chrome-arg=--disable-gpu-sandbox"
+      ],
+      "enabled": true
+    },
+
+    // Babylon.js editor MCP servers (bun only — never npx/npx-y).
+    // Installed as a devDependency of the sojourney repo (bun add -d
+    // @babylonjs/mcp-servers) so the version tracks the project's @babylonjs
+    // deps in bun.lock. Spawned as direct dist/ binaries with bun — running
+    // bunx here raced: 7 concurrent bunx installs hit cache-stampede
+    // failures (EEXIST / FileNotFound / bin-resolution races) at startup.
+    "babylonjs-node-material":     { "type": "local", "command": ["/home/mirai/.bun/bin/bun", "/home/mirai/projects/sojourney/node_modules/@babylonjs/mcp-servers/dist/nme-mcp-server.js"],          "enabled": true },
+    "babylonjs-node-geometry":     { "type": "local", "command": ["/home/mirai/.bun/bin/bun", "/home/mirai/projects/sojourney/node_modules/@babylonjs/mcp-servers/dist/nge-mcp-server.js"],          "enabled": true },
+    "babylonjs-node-render-graph": { "type": "local", "command": ["/home/mirai/.bun/bin/bun", "/home/mirai/projects/sojourney/node_modules/@babylonjs/mcp-servers/dist/nrge-mcp-server.js"],         "enabled": true },
+    "babylonjs-node-particle":     { "type": "local", "command": ["/home/mirai/.bun/bin/bun", "/home/mirai/projects/sojourney/node_modules/@babylonjs/mcp-servers/dist/npe-mcp-server.js"],          "enabled": true },
+    "babylonjs-gui":               { "type": "local", "command": ["/home/mirai/.bun/bin/bun", "/home/mirai/projects/sojourney/node_modules/@babylonjs/mcp-servers/dist/gui-mcp-server.js"],          "enabled": true },
+    "babylonjs-flow-graph":        { "type": "local", "command": ["/home/mirai/.bun/bin/bun", "/home/mirai/projects/sojourney/node_modules/@babylonjs/mcp-servers/dist/flow-graph-mcp-server.js"],    "enabled": true },
+    "babylonjs-smart-filters":     { "type": "local", "command": ["/home/mirai/.bun/bin/bun", "/home/mirai/projects/sojourney/node_modules/@babylonjs/mcp-servers/dist/smart-filters-mcp-server.js"], "enabled": true }
+  }
+}

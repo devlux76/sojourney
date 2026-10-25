@@ -1,0 +1,4 @@
+interface:
+  display_name: "Poly Haven"
+  short_description: "Find and download original Poly Haven assets"
+  default_prompt: "Use $poly-haven to find and inspect original Poly Haven assets and download the requested files with verified dependencies."

@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="/">
+<title>Wood authoring verification</title><link rel="icon" href="/icons/icon-192.png">
+<style>html,body{margin:0;height:100%;background:#111;color:white}canvas{width:100%;height:70%;display:block}#panel{padding:8px;font:14px sans-serif}#status{margin:4px 0}img.thumb{width:128px;height:128px;image-rendering:pixelated;border:1px solid #555;margin-right:8px}a.save{color:#9cf;margin-right:12px}</style>
+</head><body><canvas id="canvas"></canvas>
+<div id="panel">
+<div id="status">Wood authoring harness. Preview shows production playWoodMaterial once the pack KTX2 maps are installed.</div>
+<div>
+<button id="previewBtn">Preview log + stump</button>
+<button id="bakeBtn">Bake albedo + normal</button>
+<button id="normalsBtn">Check normal convention</button>
+</div>
+<div id="thumbs"></div>
+</div>
+<script type="module">
+import { woodAuthoring } from "/src/woodAuthoring.ts";
+const status = document.querySelector("#status");
+const thumbs = document.querySelector("#thumbs");
+window.addEventListener("unhandledrejection", event => {
+  status.textContent = `Authoring check failed: ${String(event.reason)}`;
+});
+window.woodAuthoring = woodAuthoring;
+let previewHandle = null;
+document.querySelector("#previewBtn").addEventListener("click", async () => {
+  previewHandle?.dispose();
+  thumbs.replaceChildren();
+  status.textContent = "Loading production wood preview…";
+  const canvas = document.querySelector("#canvas");
+  previewHandle = woodAuthoring.preview(canvas);
+  window.woodPreview = previewHandle;
+  status.textContent = `Preview: ${previewHandle.meshCount} meshes, orbiting with the mouse. Waiting for pack textures…`;
+  try {
+    await previewHandle.ready;
+    status.textContent = `Preview: ${previewHandle.meshCount} meshes with authored wood maps ready.`;
+  } catch (error) {
+    status.textContent = `Preview: ${String(error)}`;
+  }
+});
+document.querySelector("#bakeBtn").addEventListener("click", async () => {
+  thumbs.replaceChildren();
+  status.textContent = "Baking wood graphs (up to 15 s each)…";
+  const result = await woodAuthoring.bake();
+  status.textContent = `Baked albedo + normal at ${result.width}x${result.height}. Thumbnails below; use Save to write the PNGs.`;
+  for (const [label, url] of [["albedo", result.albedo], ["normal", result.normal]]) {
+    const img = document.createElement("img");
+    img.className = "thumb";
+    img.src = url;
+    img.alt = `wood ${label} thumbnail`;
+    const save = document.createElement("a");
+    save.className = "save";
+    save.href = url;
+    save.download = `wood_${label}.png`;
+    save.textContent = `Save ${label} PNG`;
+    thumbs.append(img, save);
+  }
+});
+document.querySelector("#normalsBtn").addEventListener("click", async () => {
+  status.textContent = "Running slope-1 normal fixture…";
+  const { x, y } = await woodAuthoring.checkNormals();
+  const line = name => check => `${name}: ${check.pass ? "PASS" : "FAIL"} distance ${check.distance.toFixed(4)}`;
+  status.textContent = `${line("bakePlaneX")(x)}; ${line("bakePlaneY")(y)}. See console for measured vectors.`;
+});
+</script></body></html>

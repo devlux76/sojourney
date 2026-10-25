@@ -1,0 +1,55 @@
+[mcp_servers.babylonjs-flow-graph]
+command = "bunx"
+args = [
+    "--bun",
+    "@babylonjs/mcp-servers@latest",
+    "flow-graph",
+]
+
+[mcp_servers.babylonjs-gui]
+command = "bunx"
+args = [
+    "--bun",
+    "@babylonjs/mcp-servers@latest",
+    "gui",
+]
+
+[mcp_servers.babylonjs-node-geometry]
+command = "bunx"
+args = [
+    "--bun",
+    "@babylonjs/mcp-servers@latest",
+    "nge",
+]
+
+[mcp_servers.babylonjs-node-material]
+command = "bunx"
+args = [
+    "--bun",
+    "@babylonjs/mcp-servers@latest",
+    "nme",
+]
+
+[mcp_servers.babylonjs-node-particle]
+command = "bunx"
+args = [
+    "--bun",
+    "@babylonjs/mcp-servers@latest",
+    "npe",
+]
+
+[mcp_servers.babylonjs-node-render-graph]
+command = "bunx"
+args = [
+    "--bun",
+    "@babylonjs/mcp-servers@latest",
+    "nrge",
+]
+
+[mcp_servers.babylonjs-smart-filters]
+command = "bunx"
+args = [
+    "--bun",
+    "@babylonjs/mcp-servers@latest",
+    "smart-filters",
+]

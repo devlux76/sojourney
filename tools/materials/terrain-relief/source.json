@@ -1,0 +1,19 @@
+{
+  "source": "USGS Data Series 716 (2012), registered 1 m lidar window",
+  "centreWorldXZ": [
+    935,
+    3800
+  ],
+  "sourceRow": 5170,
+  "sourceColumn": 9905,
+  "sourceSamples": 64,
+  "tileMetres": 64,
+  "normalPixels": 512,
+  "wavelengthMetres": [
+    2,
+    16
+  ],
+  "sourceSlopeRms": 0.1163345258243898,
+  "targetSlopeRms": 0.35,
+  "heightMetres": 4.603650260546091
+}
