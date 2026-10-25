@@ -147,6 +147,7 @@ const craterLake: Biome = {
   // the lidar and the sun's path as seen from where she lies (Llao Rock and Devils Backbone are lit
   // through the morning; Pumice Castle faces west-north-west and is in shade until early afternoon).
   // The loop already visits them in that order, so one lap is one day and the hours only run forward.
+  // NOTE(question bug:fc47167): dock dwell is 120 s here; the boat-tour design says 5 minutes.
   boat: {
     prop: "dutch_ship_medium", routeUrl: "packs/crater-lake/route/boat_tour.json", dwellSeconds: 120, standAt: [-0.8, 0, -1.5],
     shipTime: {
