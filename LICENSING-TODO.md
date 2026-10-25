@@ -3,6 +3,8 @@
 Every shipped asset must allow commercial use and be credited in `CREDITS.md`. Anything not yet
 confirmed is listed here until it is.
 
+NOTE(question bug:a566d36): the live-voice worker ships phonemizer's GPL-3.0 eSpeak NG WASM; may a commercial build ship it?
+
 ## Settled
 
 - 2026-10-02: the ground's rock layer (`ground/rock_albedo.ktx2`, `rock_normal.ktx2`) is the "rockyGround"
