@@ -538,6 +538,7 @@ From the web-ocean comparison (see R9):
 - **E29. OPEN: tone mapping is ACES.** Try AgX (web-ocean's choice, as a custom image-processing step
   if Babylon lacks it) with a slight white balance against ACES, on the same frames at noon, low
   sun and night. ACES shifts saturated blues and golds; AgX keeps the hue. Keep dithering (E19).
+  NOTE(question bug:5f2c5a1): the AgX comparison is built but off; keep ACES or switch?
 - **U21. OPEN: the zenith is a much deeper navy than any reference photo** (photo audit of
   2026-10-11). Cause not established: atmosphere tuning, exposure or tone mapping (try with E29).
 
